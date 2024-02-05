@@ -17,8 +17,14 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	runtimeOnly 'mysql:mysql-connector-java'
 	// 타임리프
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	// lombok
+	implementation 'org.projectlombok:lombok:1.18.22'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
