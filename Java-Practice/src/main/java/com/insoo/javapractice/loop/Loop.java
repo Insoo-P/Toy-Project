@@ -53,6 +53,11 @@ public class Loop {
             System.out.printf("4-1. ##### %s %n", str);
         }
 
+        // Iterator<Integer> iteratorKey = engkeys.iterator();
+        // while(iteratorKey.hasNext()){
+        //     System.out.printf("### engKeys : %d %n", iteratorKey.next());
+        // }
+
         /**
          * 4. Enhanced for문
          *    JDK 1.5부터 추천

@@ -28,5 +28,11 @@ public class SetType {
         List<String> toArrayList2 = new ArrayList<>(hashSetType);
         toArrayList2.add("F");
         toArrayList2.forEach(str -> System.out.printf("3. ##### %s %n", str));
+
+        /**
+            values
+            keySet
+            entrySet
+         */
     }
 }
