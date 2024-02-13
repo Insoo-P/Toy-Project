@@ -11,6 +11,9 @@ import java.util.*;
     forEach
     reduce
 
+    sorted
+    coolect
+    parallelStream
     anyMatch
     skip
     findFirst
