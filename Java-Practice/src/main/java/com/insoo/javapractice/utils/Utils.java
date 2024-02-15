@@ -1,8 +1,8 @@
 package com.insoo.javapractice.utils;
 
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Utils {
 
@@ -60,7 +60,62 @@ public class Utils {
     /**
      * Type List → 중복제거
      */
-//    public static void removeDuplicates(){
-//        return
+    public static <T> List<T> removeDuplicatesList(List<T> list) {
+        // 1. List → Set으로 만들자
+        // Set<T> tmpSet = new HashSet<>(list);
+        // List<T> tmpList = new ArrayList<>(tmpSet);
+
+        // 2. List의 값을 HashSet에 차례대로 넣으면서 중복 여부를 확인한다.
+        Set<T> tmpSet = new HashSet<>();
+        List<T> tmpList = list.stream()
+                // tmpSet에 추가되면 true가 반환된다.
+                .filter(f -> tmpSet.add(f))
+                .collect(Collectors.toCollection(ArrayList::new));
+                // .toList(); → toList()로 못하는 이유는 불변으로 생성하기 때문이다.
+        return tmpList;
+    }
+//    public static <T> List<T> removeDuplicatesList(List<T> list) {
+//        // 1. List → Set으로 만들고 중복 제거
+//        Set<T> tmpSet = new HashSet<>(list);
+//
+//        // 2. 중복이 제거된 Set을 리스트로 변환하여 반환
+//        return new ArrayList<>(tmpSet);
 //    }
+
+    /**
+     * Type List → Map 변환
+     * : List의 index가 key값으로 대체
+     * @param list<T>
+     * @return Map<Integer, T>
+     */
+    public static <T> Map<Integer, T> listToMap(List<T> list) {
+        Map<Integer, T> tmpMap = new HashMap<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            tmpMap.put(i, list.get(i));
+        }
+
+        return tmpMap;
+    }
+
+    /**
+     * Type List → Map 변환
+     * : 두번째 파라미터에 넘어온 List가 key값으로 대체
+     * @param value
+     * @param key
+     * @return Map<K, V>
+     */
+    public static <K, V, T> Map<K, V> listToMapWithKey(List<T> value, List<T> key){
+        List<T> tmpList = removeDuplicatesList(key);
+        if(tmpList.size() != value.size()){
+            return null;
+        }
+
+        Map<K, V> tmpMap = new HashMap<>();
+
+        for(int i=0; i<value.size(); i++){
+            tmpMap.put((K) key.get(i), (V) value.get(i));
+        }
+        return tmpMap;
+    }
 }

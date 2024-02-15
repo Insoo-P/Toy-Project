@@ -11,8 +11,9 @@ import java.util.*;
     forEach
     reduce
 
+    Collectors
+
     sorted
-    coolect
     parallelStream
     anyMatch
     skip
@@ -30,8 +31,11 @@ public class Stream {
 
         Collection<String> mapValues = map.values();
         mapValues.stream()
+                // 중복 제거
                 .distinct()
+                // 값 변형
                 .map(m -> m + "-SS")
+                // true인것만 남고 나머지는 제거
                 .filter(f -> "D-SS".equals(f))
                 .forEach(v -> System.out.println("#### Map, Filter : " + v));
 
@@ -48,14 +52,20 @@ public class Stream {
         );
 
         List<Integer> flattenedList = numbers.stream()
+                // 안에 어떤 형태의 Collection이든 모든걸 꺼내서 같은 위치에 나열해준다.
                 .flatMap(Collection::stream) // list -> list.stream()
                 .toList();
 
         System.out.println("Flattened list: " + flattenedList);
 
 
-        Optional<Integer> sum1 = flattenedList.stream().reduce(Integer::sum); // (x, y) -> x + y
-        Integer sum2 = flattenedList.stream().reduce(10, Integer::sum);
+        Optional<Integer> sum1 = flattenedList.stream()
+                // (x, y) → x + y
+                .reduce(Integer::sum);
+        Integer sum2 = flattenedList.stream()
+                // 줄이다 → 다 합치는 등..
+                .reduce(10, Integer::sum);
+
         System.out.println("reduce sum1: " + sum1.get());
         System.out.println("reduce sum2: " + sum2);
 
