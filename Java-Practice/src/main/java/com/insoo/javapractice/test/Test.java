@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Test {
 
+
     public static void main(String[] args){
 
         Map<String, Object> map = new HashMap<>();
@@ -13,6 +14,7 @@ public class Test {
         Map<String, String> ko = new HashMap<>();
         Map<Object, Object> obj = new HashMap<>();
         Map<Object, Object> obj2 = new HashMap<>();
+
         eng.put(1,"A");
         eng.put(2,"B");
         eng.put(3,"C");
@@ -62,16 +64,40 @@ public class Test {
 
         List<String> listTest = new ArrayList<>();
         listTest.add("A");
+        listTest.add("A");
+        listTest.add("A");
+        listTest.add("A");
         listTest.add("B");
         listTest.add("C");
         listTest.add("D");
         listTest.add("A");
 
-        listTest.forEach(value -> System.out.println("###### List Value : " + value));
+        List<String> listTest2 = new ArrayList<>();
+        listTest2.add("r");
+        listTest2.add("e");
+        listTest2.add("w");
+        listTest2.add("q");
+        listTest2.add("a");
+        listTest2.add("s");
+        listTest2.add("d");
+        listTest2.add("f");
+        listTest2.add("f");
 
-        for(Iterator<String> iterator = listTest.iterator(); iterator.hasNext();){
-            System.out.println("#### Iterator Value : " + iterator.next());
-        };
+        List<String> listSetTest = Utils.removeDuplicatesList(listTest);
+
+        listSetTest.forEach(p -> System.out.println("##### listSetTest : " + p));
+
+        ///////////////////////////////////////////////////////////////////////
+
+//        Map<Integer, String> listMapTest = Utils.listToMap(listTest);
+//        listMapTest.forEach((k, v) -> System.out.println("k + v" + k + ":" + v));
+
+        Map<String, String> listMapTest2 = Utils.listToMapWithKey(listTest, listTest2);
+        if (listMapTest2 != null) {
+            listMapTest2.forEach((k, v) -> System.out.println(k + ":" + v));
+        }
+
+        ///////////////////////////////////////////////////////////////////////
 
 
     }

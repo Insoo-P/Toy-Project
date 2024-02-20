@@ -49,6 +49,7 @@ public class Loop {
          *    Iterato는 순회 중에 요소를 삭제해도 ConcurrentModificationException가 발생하지 않도록 설계되었다.
          */
         for(Iterator<String> iterator = list.iterator(); iterator.hasNext();){
+            // .next()를 이용하면 무조건 다음 단계로 넘어간다. ex) System.out.println(iterator.next()) 포함
             String str = iterator.next();
             System.out.printf("4-1. ##### %s %n", str);
         }
