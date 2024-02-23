@@ -48,7 +48,6 @@ export function loopFn(){
             yield "수";
         }
     };
-    
     for(const value of iterableObj){
         console.log('for ... of (iterableObj) : ' + value)
     }
