@@ -1,5 +1,6 @@
 
 export function loopFn(){
+    
     // 1. for
     for(let i=0; i<5; i++){
         console.log("for : " + i)
